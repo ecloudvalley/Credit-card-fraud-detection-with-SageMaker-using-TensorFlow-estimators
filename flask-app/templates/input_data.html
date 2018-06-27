@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="{CHARSET}">
-        <title>predict data</title>
-        <div id='title' align="Center" style="font-size:350%">predict data</div>
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    </head>
-    <body>
-      <div class="col-sm-12">
-      <div class="col-sm-3" align="center">
-        <h1>input area：</h1>
-        <textarea form="send" name="text" rows="8" cols="100" id="content" type="text" style="margin-left:20px"></textarea><br />
-        <h1>show input value：</h1>
-        <div id="display_area"></div>
-        <form action = "/result" method = "post" id="send">
-        <input name="data" value="predict" type="submit" id="btn" style="margin-top:20px" class="w3-btn w3-black"/>
-        </form>
-        <div class="col-sm-9 bg" >
 
+<head>
+  <meta charset="{CHARSET}">
+  <title>predict data</title>
+  <div id='title' align="Center" style="font-size:350%">predict data</div>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
 
-        </div>
+<body>
+  <div class="col-sm-12">
+    <div class="col-sm-3" align="center">
+      <h1>input area：</h1>
+      <textarea form="send" name="text" rows="8" cols="100" id="content" type="text" style="margin-left:20px"></textarea><br />
+      <h1>show input value：</h1>
+      <div id="display_area"></div>
+      <form action="/result" method="post" id="send">
+        <input name="data" value="predict" type="submit" id="btn" style="margin-top:20px" class="w3-btn w3-black" />
+      </form>
+      <div class="col-sm-9 bg">
+
 
       </div>
-    </body>
-    <script>
-    window.onload=function(){
-        var display_area = document.getElementById("display_area");
-        var btn = document.getElementById("btn");
-        btn.onclick = function(){
-            var content_val = document.getElementById("content").value;
-            display_area.append(content_val);
-            window.location.href = "result";
-        };
-    }
-    </script>
+
+    </div>
+</body>
+<script>
+  window.onload = function() {
+    var display_area = document.getElementById("display_area");
+    var btn = document.getElementById("btn");
+    btn.onclick = function() {
+      var content_val = document.getElementById("content").value;
+      display_area.append(content_val);
+      window.location.href = "result";
+    };
+  }
+</script>
+
 </html>
