@@ -39,7 +39,7 @@ TensorFlow's high-level machine learning API (tf.estimator) makes it easy to con
 ## Prerequisites
 1.	Sign-in a AWS account, and make sure you have select **N.Virginia region**<br>
 2.	Make sure your account have permission to create IAM role for following services: **S3**, **SageMaker**, **Lambda**, **API Gateway**<br>
-3.	Download and unzip **Lab_items.zip** and ensure that Lab_items folder including two folders and some files:<br>
+3.	Download **this repository** and unzip, ensure that folder including two folders and some files:<br>
 Folder: **Flask-app** (contains the code to build application of demo)<br>
 Folder: **data** including **train_data.csv**, **test_data.csv** (training and testing data of machine learning job of SageMaker)
 
