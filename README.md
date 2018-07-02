@@ -364,8 +364,8 @@ In terminal go to the same directory path of **flask-app** folder<br>
 e.g., Mac example below<br><br>
 ![demo4.png](/images/demo4.png) <br> 
 Run below two commands to run Flask web application<br>
-export FLASK_DEBUG=1
-FLASK_APP=app.py flask run
+**export FLASK_DEBUG=1**    <br>
+**FLASK_APP=app.py flask run**
 <br><br>
 ![demo5.png](/images/demo5.png) <br> 
 Python will run it on **localhost:5000**<br>
