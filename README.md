@@ -253,7 +253,7 @@ Change to this data below:<br>
 ![invoke_endpoint1.png](/images/invoke_endpoint1.png) <br>  
 Then run the cell to get the output<br><br>
 ![invoke_endpoint2.png](/images/invoke_endpoint2.png) <br>   
-**The result shows the fraud probability of this credit card data is 0.9594** (for example of this model)<br>
+**The result shows the fraud probability of this credit card data is 0.9518** (for example of this model)<br>
 
 * 	Now don’t run the cells below **“(Optional) Delete the Endpoint”** heading. That means to delete this endpoint. You can delete it after this workshop.<br>
 * 	Back to **SageMaker** console, click **Endpoints** you will find the endpoint you just created and click **Models** you will find the model you deployed<br><br>
