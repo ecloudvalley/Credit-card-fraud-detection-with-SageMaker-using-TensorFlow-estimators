@@ -390,3 +390,66 @@ You can see the results of prediction<br><br>
 ![demo15.png](/images/demo15.png) <br> <br>
 ![demo16.png](/images/demo16.png) <br> <br>
 ![demo17.png](/images/demo17.png) <br> <br>
+
+## Appendix
+
+In the real-world example, when the system detects the fraud you may want to inform your client by sending the message through mobile phone or email, so actually, you can integrate with **SNS** service in this architecture
+
+* First you need to create a topic and subscribe that topic in SNS dashboard<br>
+![sns1.png](/images/sns1.png) <br> <br>
+* There are various types of target to send the message<br><br>
+![sns2.png](/images/sns2.png) <br> <br>
+* Back to your Lambda function and add some code as below<br><br>
+* 
+      import boto3
+      import json
+      from time import gmtime, strftime
+      import time
+      import datetime
+
+      client = boto3.client('runtime.sagemaker')
+      sns = boto3.client('sns')
+
+      ENDPOINT_NAME = 'YourSageMakerEndpointName'
+
+      def lambda_handler(event, context):
+          # TODO implement
+          # print(event['body'])
+          # print(type(event['body']))
+          # list(event['body'])
+          target = json.loads(event['body'])
+          result = client.invoke_endpoint(EndpointName=ENDPOINT_NAME,Body=json.dumps(target))
+          response = json.loads(result['Body'].read())
+
+          print(response)
+          fraud_rate = response['result']['classifications'][0]['classes'][1]['score']
+          fraud = float(fraud_rate)*100
+
+          if fraud>=90:
+              now = datetime.datetime.now()
+              tdelta = datetime.timedelta(hours=8)
+              mytime = now + tdelta
+
+              mail_response = sns.publish(
+              TopicArn='YourSNSTopicArn',
+              Message='Do you remember this transaction?' + '\n' + mytime.strftime("%Y-%m-%d %H:%M:%S") + '\n Please check your credit card account \n it might be a fraud transaction',
+              Subject='Transaction Alert')
+
+          http_response = {
+              'statusCode': 200,
+              'body': json.dumps(response),
+              'headers':{
+                  'Content-Type':'application/json',
+                  'Access-Control-Allow-Origin':'*'
+              }
+          }
+          return http_response 
+          
+ * Remember to change **ENDPOINT_NAME** of SageMaker and **TopicArn** of SNS<br>
+ * In this example, SNS will push a message to my Email if the fraud rate of prediction is over 90%<br><br>
+ 
+  ![alert1.png](/images/alert1.png) <br> <br>
+ 
+ * You will recieve an alert message from your target of SNS topic<br>
+ * You can also check the time that transaction occurred &nbsp; (Email for this example)<br><br>
+  ![alert2.png](/images/alert2.png) <br> <br>
