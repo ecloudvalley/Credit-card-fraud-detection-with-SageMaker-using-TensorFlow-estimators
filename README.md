@@ -346,7 +346,7 @@ Now you finish API deployment and you can try the demo on application<br>
 
 #### Demo it
 
-#### demo in local environment
+#### Demo in local environment
 * 	For this workshop, we build a **Flask** web application to call API<br>
 Detail: http://flask.pocoo.org/<br>
 **Make sure that you have installed python2.7** in your system<br>
@@ -392,7 +392,7 @@ You can see the results of prediction<br><br>
 ![demo16.png](/images/demo16.png) <br> <br>
 ![demo17.png](/images/demo17.png) <br> <br>
 
-#### demo in AWS Cloud9 environment
+#### Demo in AWS Cloud9 environment
 * On the **service** menu, click **Cloud9**.<br>
 * Click **Create environment** 
 * Enter the name of your environment in **Name** (e.g., **flask-env**)
