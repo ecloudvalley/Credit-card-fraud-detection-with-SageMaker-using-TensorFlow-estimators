@@ -346,7 +346,7 @@ Now you finish API deployment and you can try the demo on application<br>
 
 #### Demo it
 
-##### demo in local environment
+#### demo in local environment
 * 	For this workshop, we build a **Flask** web application to call API<br>
 Detail: http://flask.pocoo.org/<br>
 **Make sure that you have installed python2.7** in your system<br>
@@ -392,7 +392,7 @@ You can see the results of prediction<br><br>
 ![demo16.png](/images/demo16.png) <br> <br>
 ![demo17.png](/images/demo17.png) <br> <br>
 
-##### demo in AWS Cloud9 environment
+#### demo in AWS Cloud9 environment
 * On the **service** menu, click **Cloud9**.<br>
 * Click **Create environment** 
 * Enter the name of your environment in **Name** (e.g., **flask-env**)
@@ -400,7 +400,7 @@ You can see the results of prediction<br><br>
 * Select **Create a new instance for environment (EC2)** and **t2.micro (1 GiB RAM + 1 vCPU)** for Environment type and Instance type
 * Click **Next step**
 * Click **Create environment**
-You will need to wait Cloud9 for setup environment in a few minutes
+You will need to wait Cloud9 for setup environment in a few minutes <br>
 ![cloud9_1.png](/images/cloud9_1.png) <br> <br>
 
 * Paste command at below terminal
@@ -411,12 +411,12 @@ You will need to wait Cloud9 for setup environment in a few minutes
       sudo pip install flask
 
 * Click **app**.**py** in
-**Credit-card-fraud-detection-with-SageMaker-using-TensorFlow-estimators/flask-app**
-* In line 80, modify the port from **5000** to **8080** 
+**Credit-card-fraud-detection-with-SageMaker-using-TensorFlow-estimators/flask-app** <br>
+* In line 80, modify the port from **5000** to **8080** <br>
 ![cloud9_2.png](/images/cloud9_2.png) <br> <br>
-* Click **Run** on the toolbar and click **Preview Running Application** in **Preview**
+* Click **Run** on the toolbar and click **Preview Running Application** in **Preview** <br>
 ![cloud9_3.png](/images/cloud9_3.png) <br> <br>
-The screen will show as below
+The screen will show as below <br>
 ![cloud9_4.png](/images/cloud9_4.png) <br> <br>
 * Click Pop Out Window to open website in another tab in your browser
 ![cloud9_5.png](/images/cloud9_5.png) <br> <br>
