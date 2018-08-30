@@ -424,7 +424,7 @@ The screen will show as below <br>
 ![cloud9_5.png](/images/cloud9_5.png) <br> <br>
 
 We prepare 10 input data that is real fraud data for prediction at the screen below (in app.py)<br><br>
-
+![input.png](/images/input.png) <br> <br>
 You can copy and paste each data in input area and click **predict**<br><br>
 ![cloud9_6.png](/images/cloud9_6.png) <br> <br>
 Then you will get the prediction result on **cloud9 website**<br>
