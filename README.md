@@ -414,6 +414,8 @@ You will need to wait Cloud9 for setup environment in a few minutes <br>
 **Credit-card-fraud-detection-with-SageMaker-using-TensorFlow-estimators/flask-app** <br>
 * In line 80, modify the port from **5000** to **8080** <br>
 ![cloud9_2.png](/images/cloud9_2.png) <br> <br>
+* In line 50 ~ 51, modify the **url of post request to your API url** that you create in API Gateway step <br>
+![api_url.png](/images/api_url.png) <br> <br>
 * Click **Run** on the toolbar and click **Preview Running Application** in **Preview** <br>
 ![cloud9_3.png](/images/cloud9_3.png) <br> <br>
 The screen will show as below <br>
