@@ -346,6 +346,7 @@ Now you finish API deployment and you can try the demo on application<br>
 
 #### Demo it
 
+##### demo in local environment
 * 	For this workshop, we build a **Flask** web application to call API<br>
 Detail: http://flask.pocoo.org/<br>
 **Make sure that you have installed python2.7** in your system<br>
@@ -390,6 +391,43 @@ You can see the results of prediction<br><br>
 ![demo15.png](/images/demo15.png) <br> <br>
 ![demo16.png](/images/demo16.png) <br> <br>
 ![demo17.png](/images/demo17.png) <br> <br>
+
+##### demo in AWS Cloud9 environment
+* On the **service** menu, click **Cloud9**.<br>
+* Click **Create environment** 
+* Enter the name of your environment in **Name** (e.g., **flask-env**)
+* Click **Next step**
+* Select **Create a new instance for environment (EC2)** and **t2.micro (1 GiB RAM + 1 vCPU)** for Environment type and Instance type
+* Click **Next step**
+* Click **Create environment**
+You will need to wait Cloud9 for setup environment in a few minutes
+![cloud9_1.png](/images/cloud9_1.png) <br> <br>
+
+* Paste command at below terminal
+* 
+      git clone https://github.com/ecloudvalley/Credit-card-fraud-detection-with-SageMaker-using-TensorFlow-estimators.git
+
+* 
+      sudo pip install flask
+
+* Click **app**.**py** in
+**Credit-card-fraud-detection-with-SageMaker-using-TensorFlow-estimators/flask-app**
+* In line 80, modify the port from **5000** to **8080** 
+![cloud9_2.png](/images/cloud9_2.png) <br> <br>
+* Click **Run** on the toolbar and click **Preview Running Application** in **Preview**
+![cloud9_3.png](/images/cloud9_3.png) <br> <br>
+The screen will show as below
+![cloud9_4.png](/images/cloud9_4.png) <br> <br>
+* Click Pop Out Window to open website in another tab in your browser
+![cloud9_5.png](/images/cloud9_5.png) <br> <br>
+
+We prepare 10 input data that is real fraud data for prediction at the screen below (in app.py)<br><br>
+
+You can copy and paste each data in input area and click **predict**<br><br>
+![cloud9_6.png](/images/cloud9_6.png) <br> <br>
+Then you will get the prediction result on **cloud9 website**<br>
+![cloud9_7.png](/images/cloud9_7.png) <br> <br>
+![cloud9_8.png](/images/cloud9_8.png) <br> <br>
 
 ## Appendix
 
