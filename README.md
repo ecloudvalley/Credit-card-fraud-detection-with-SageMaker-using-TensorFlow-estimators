@@ -418,7 +418,7 @@ You will need to wait Cloud9 for setup environment in a few minutes <br>
 ![cloud9_3.png](/images/cloud9_3.png) <br> <br>
 The screen will show as below <br>
 ![cloud9_4.png](/images/cloud9_4.png) <br> <br>
-* Click Pop Out Window to open website in another tab in your browser
+* Click Pop Out Window to open website in another tab in your browser <br>
 ![cloud9_5.png](/images/cloud9_5.png) <br> <br>
 
 We prepare 10 input data that is real fraud data for prediction at the screen below (in app.py)<br><br>
