@@ -1,32 +1,58 @@
-# Credit card fraud detection with SageMaker
-![kaggle_data_pic.png](/images/kaggle_data_pic.png)
-**This lab using credit card fraud detection dataset on Kaggle**
+# Credit card fraud detection with AI / ML
+![Credit Card Fraud Detection with AI / ML](./images/main_title.jpg)
+*This lab using credit card fraud detection dataset from Kaggle*
+
+
 
 ## Scenario
 
 Various of companies want to make their data more valuable because data analysis is one way to make better quality of service to client. Valuable data also have a great insight to get more business opportunities. Thus, many startups or companies decide to build machine learning workflow but the process is so complicated that can easily cause several problems. One of main problems is due to lack of data scientist or data engineer team, so the training process seems too difficult to create and make sense. Another problem is deployment of machine learning backend server that contains lots of trouble to engineer which impossible to fulfill workflow in a short time.
- 
+
 AWS plays an important role of machine learning solution on cloud. We will focus on Amazon SageMaker to quickly create training job and deploy machine learning model. You can invoke Amazon SageMaker endpoint to do A/B test for production. The architecture also integrate with several services to invoke endpoint with serverless application which contains S3, Lambda, API Gateway.
 
-## Use Case in this Lab 
-* Dataset: Credit Card Fraud Detection <br>
-https://www.kaggle.com/mlg-ulb/creditcardfraud
+
+
+## Updates
+
+#### By Samuel Chan @ 2020-09-30
+
+Since July this year 2020, **Amazon Fraud Detector** is Generally Available, meaning that apart from using Amazon SageMaker doing data processing and ML training, now you can use Amazon Fraud Detector Service, which it's a fully managed service that makes it even more easier and faster to intergrate with your online application, as simple as just using API calls to the Amazon Fraud Detector service.
+
+![How Amazon Fraud Detector Works](https://d1.awsstatic.com/diagrams/HIW_Fraud_Detector.342744016f00602e5bdc4ba551f9a2a0736e0e14.png)
+
+To learn more about the service, please visit to the Amazon Blog:  [Amazon Fraud Detector is now Generally Available](https://aws.amazon.com/blogs/aws/amazon-fraud-detector-is-now-generally-available/)
+
+In this Github Repository, we still stick with using Amazon SageMaker Service as the lab material, for you to understand the machine learning flow from data processing, choosing algorithm, performing ML training and model deployment.
 
 
 
-![preview_data1.png](/images/preview_data1.png)<br>
-![preview_data2.png](/images/preview_data2.png)<br>
+## Resources in this Lab 
+
+Dataset: [Credit Card Fraud Detection from Kaggle](https://www.kaggle.com/mlg-ulb/creditcardfraud)
+
+Here are some of the screenshots for the dataset, those columns v1 to v28 are the data that already finished [feature engineering](https://en.wikipedia.org/wiki/Feature_engineering), those are in the feature format. So we can straightly use this dataset pass into the supervised learning algorithm for training.
+
+![preview_data1.png](./images/preview_data1.png)
+
+![preview_data2.png](./images/preview_data2.png)
+
+
 
 ## Lab Architecture
-![lab_architecture.png](/images/lab_architecture.png)
+![lab_architecture.png](./images/lab_architecture.png)
 
-As illustrated in the preceding diagram, this is a big data processing in this model:<br><br>
-* 1.&nbsp;&nbsp; 	Developer uploads dataset to S3 and then loads dataset to SageMaker<br><br>
-* 2.&nbsp;&nbsp; 	Developer train machine learning job and deploy model with SageMaker<br><br>
-* 3.&nbsp;&nbsp; 	Create endpoint on SageMaker that can invoked by Lambda<br><br>
-* 4.&nbsp;&nbsp; 	Create API with API Gateway in order to send request between Application and API Gateway <br><br>
-* 5.&nbsp;&nbsp; 	API Gateway send request to Lambda that invoke prediction job on SageMaker endpoint<br><br>
-* 6.&nbsp;&nbsp; 	SageMaker response the result of prediction from API Gateway back to Application<br><br>
+As illustrated in the preceding diagram, this is a big data processing in this model:
+1. Developer uploads dataset to S3 and then loads dataset to SageMaker
+
+2. Developer train machine learning job and deploy model with SageMaker
+
+3. Create endpoint on SageMaker that can invoked by Lambda
+
+4. Create API with API Gateway in order to send request between Application and API Gateway 
+
+5. API Gateway send request to Lambda that invoke prediction job on SageMaker endpoint
+
+6. Amazon SageMaker response the result of prediction from API Gateway back to Application
 
 ## AWS SageMaker introduction
 Amazon SageMaker is a fully managed machine learning service. With Amazon SageMaker, data scientists and developers can quickly and easily build and train machine learning models, and then directly deploy them into a production-ready hosted environment. It provides an integrated Jupyter authoring notebook instance for easy access to your data sources for exploration and analysis, so you don't have to manage servers. It also provides common machine learning algorithms that are optimized to run efficiently against extremely large data in a distributed environment. 
@@ -54,7 +80,7 @@ The role that allow Lambda trigger prediction job with Amazon SageMaker by clien
 The role that allow Amazon SageMaker to execute full job and get access to S3, CloudWatchLogs (create this role in SageMaker section)<br><br>
 
 
- 
+
 * 	On the **service** menu, click **IAM**.<br>
 * 	In the navigation pane, choose **Roles**.<br>
 * 	Click **Create role**.<br><br>
@@ -68,13 +94,13 @@ After above step you successfully create the role for Lambda trigger prediction 
 * 	On the service menu, click **Amazon SageMaker**<br>
 * 	In the navigation pane, choose **Notebook**.<br>
 * 	Click **Create notebook instance** and you can find following screen<br>
- 
+
 * 	In **IAM role** blank select **Create a new role**<br>
 * 	For **S3 buckets you specify**, choose **Any S3 bucket** and click **Create role**<br>
 ![iam_role2.png](/images/iam_role2.png) <br>
 * 	Back to **IAM** console, click **Roles**<br>
 * 	Click the role **AmazonSageMaker-ExecutionRole-xxxxxxxxxxxxxxx** you just created by before step<br>
- 
+
 * 	In **Permissions** tab below click **Attach policy**<br>
 * 	Search and choose policy name **CloudWatchLogsFullAccess** then click **Attach policy**<br>
 * 	You will see below screen on console<br>
@@ -135,7 +161,7 @@ model_artifacts_location = 's3://tfdnn-dataset/artifacts'<br><br>
 After changing bucket name<br><br>
 ![model_setting4.png](/images/model_setting4.png) <br>
 **Remember to press shift + enter to run this cell**<br>
- 
+
 In next step we will create a deep neural network model with a source code:<br>
 **The framework is TensorFlow estimator**<br>
 **Neural network classification model with DNN Classifier** <br>
@@ -146,28 +172,28 @@ https://www.tensorflow.org/get_started/premade_estimators<br>
 You will see this python code<br><br>
 ![model_setting6.png](/images/model_setting6.png) <br>
 First, we need to modify the parameter **shape** which represent the label or the column we want to train in our credit card fraud detection dataset<br>
- 
+
 In function **estimator_fn** modify shape from 4 to **29** that means we train **V1, V2, V3 … V28 and Amount label (total: 29)** and predict the Class<br><br>
 In function serving_input_fn modify shape from 4 to **29** that means we train **V1, V2, V3 … V28 and Amount label (total: 29)** and predict the Class<br><br>
- 
+
 
 Second, we need to modify the predict label **n_classes** which means how many type or class for predict label<br>
- 
+
 In function **estimator_fn** modify **n_classes** from 3 to **2** that means our fraud detection class only contain two types : **0 (normal)** or **1 (Fraud)**<br>
- 
+
 
 
 Third, we modify the name of training data and test data that match to **train_data.csv** and **test_data.csv**<br>
- 
+
 In function **train_input_fn** modify **iris_training.csv** to **train_data.csv**<br><br>
 In function **eval_input_fn** modify **iris_test.csv** to **test_data.csv**<br><br>
- 
+
 Last, let’s modify the function that load csv with header. Our dataset is **without header** after preprocessing<br>
- 
+
 In function **_generate_input_fn** modify<br>
 **tf.contrib.learn.datasets.base.load_csv_with_header** to<br>
 **tf.contrib.learn.datasets.base.load_csv_without_header**<br>
- 
+
 The origin source code below<br><br>
 ![model_setting7.png](/images/model_setting7.png) <br>
 **The code we modify for our dataset below**<br><br>
@@ -178,25 +204,25 @@ Run the cell that contain **!cat "iris_dnn_classifier.py"** you will see **iris_
 ![model_setting10.png](/images/model_setting10.png) <br>
 In following cells, modify the parameter that we have done in **iris_dnn_classifier.py**<br>
 **(shape=[29], n_classes=2, train_data.csv for training set ,load_csv_without_header)**<br>
- 
+
 Cell below **“Using a tf.estimator in SageMaker”** heading<br>
 Origin code<br><br>
 ![model_setting11.png](/images/model_setting11.png) <br>
 After modify<br><br>
 ![model_setting12.png](/images/model_setting12.png) <br>
- 
+
 Cell below **“Describe the training input pipeline”** heading<br>
 Origin code<br><br>
 ![model_setting13.png](/images/model_setting13.png) <br>
 After modify<br><br>
 ![model_setting14.png](/images/model_setting14.png) <br>
- 
+
 Cell below **“Describe the serving input pipeline”** heading<br>
 Origin code<br><br>
 ![model_setting15.png](/images/model_setting15.png) <br>
 After modify<br><br>
 ![model_setting16.png](/images/model_setting16.png) <br>
- 
+
 Remember to run those cells to ensure whether an error occur in model<br>
 Next part we train our model and get the result of training<br>
 
@@ -227,7 +253,7 @@ Press shift + enter to run the cell<br><br>
 **Accuracy = 0.99953127**<br>
 **AUC = 0.9594897**<br>
 **Average loss = 0.0026860863**<br>
- 
+
 **Summary: Those value indicate that this machine learning model perform well on our dataset**<br>
 
 
@@ -246,7 +272,7 @@ Wait for a while until it finish deployment<br><br>
 * 	The cell below **“Invoke the Endpoint to get inferences”** heading do prediction job and output the prediction result<br>
 * 	Modify the data in **iris_predictor.predict()**<br>
 Change to this data below:<br>
- 
+
 [-15.819178720771802,8.7759971528627,-22.8046864614815,11.864868080360699,-9.09236053189517,-2.38689320657655,-16.5603681078199,0.9483485947860579,-6.31065843275059,-13.0888909176936,9.81570317447819,-14.0560611837648,0.777191846436601,-13.7610179615936,-0.353635939812489,-7.9574472262599505,-11.9629542349435,-4.7805077876172,0.652498045264831,0.992278949261366,-2.35063374523783,1.03636187430048,1.13605073696052,-1.0434137405139001,-0.10892334328197999,0.657436778462222,2.1364244708551396,-1.41194537483904,-0.3492313067728856]<br>
  <br>
 **This data is selected from real fraud data that can test accuracy of our model for prediction (output contain class 0 for normal transaction and class 1 for fraud transaction )**<br><br>
@@ -293,7 +319,7 @@ Next step you will learn how to create a Lambda function to invoke that endpoint
           response = json.loads(result['Body'].read())
 
           print(response)
-
+        
           http_response = {
               'statusCode': 200,
               'body': json.dumps(response),
@@ -307,7 +333,7 @@ Next step you will learn how to create a Lambda function to invoke that endpoint
 
 <br>![lambda_function3.png](/images/lambda_function3.png) <br> 
 * 	Click **Save** to save the change of function.
- 
+
 
 
 
@@ -360,7 +386,7 @@ Run **pip install Flask** in terminal<br>
 In function **predict_result()** find the post URL in about line 33<br>
 Modify the URL to your **invoke URL{proxy+}** that have created on API Gateway<br>
 ![demo3.png](/images/demo3.png) <br> 
- 
+
 In terminal go to the same directory path of **flask-app** folder<br>
 e.g., Mac example below<br><br>
 ![demo4.png](/images/demo4.png) <br> 
@@ -446,12 +472,12 @@ In the real-world example, when the system detects the fraud you may want to inf
       from time import gmtime, strftime
       import time
       import datetime
-
+        
       client = boto3.client('runtime.sagemaker')
       sns = boto3.client('sns')
-
+        
       ENDPOINT_NAME = 'YourSageMakerEndpointName'
-
+        
       def lambda_handler(event, context):
           # TODO implement
           # print(event['body'])
@@ -460,21 +486,21 @@ In the real-world example, when the system detects the fraud you may want to inf
           target = json.loads(event['body'])
           result = client.invoke_endpoint(EndpointName=ENDPOINT_NAME,Body=json.dumps(target))
           response = json.loads(result['Body'].read())
-
+        
           print(response)
           fraud_rate = response['result']['classifications'][0]['classes'][1]['score']
           fraud = float(fraud_rate)*100
-
+        
           if fraud>=90:
               now = datetime.datetime.now()
               tdelta = datetime.timedelta(hours=8)
               mytime = now + tdelta
-
+        
               mail_response = sns.publish(
               TopicArn='YourSNSTopicArn',
               Message='Do you remember this transaction?' + '\n' + mytime.strftime("%Y-%m-%d %H:%M:%S") + '\n Please check your credit card account \n it might be a fraud transaction',
               Subject='Transaction Alert')
-
+        
           http_response = {
               'statusCode': 200,
               'body': json.dumps(response),
@@ -484,12 +510,12 @@ In the real-world example, when the system detects the fraud you may want to inf
               }
           }
           return http_response 
-          
+  
  * Remember to change **ENDPOINT_NAME** of SageMaker and **TopicArn** of SNS<br>
  * In this example, SNS will push a message to my Email if the fraud rate of prediction is over 90%<br><br>
- 
+
   ![alert1.png](/images/alert1.png) <br> <br>
- 
+
  * You will recieve an alert message from your target of SNS topic<br>
  * You can also check the time that transaction occurred &nbsp; (Email for this example)<br><br>
-  ![alert2.png](/images/alert2.png) <br> <br>
+    ![alert2.png](/images/alert2.png) <br> <br>
